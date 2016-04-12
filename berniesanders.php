@@ -85,7 +85,7 @@
                     $username = "pwhitter1";
                     $password = "yCFFNyp.";
 
-                    $conn = mysqli_connect($servername, $username, $password);
+                    $conn = mysqli_connect ($servername, $username, $password);
 
                     // Check connection
                     if (!$conn) {
@@ -94,22 +94,24 @@
 
                     mysqli_query($conn, "use pwhitter1");
 
-                    $result = mysqli_query($conn, "select stateName from CurrentPrimaryData where winnerName='Bernie Sanders';");
-
-                    //echo "b";
-
-                    while($row = mysqli_fetch_array($result)){
-                        $stateName = $row[0];
-                        echo $stateName;
-                        //echo "hello";
-                        //echo "<br>";
+                    $result = mysqli_query ($conn, "select stateName from CurrentPrimaryData where winnerName='Bernie Sanders' order by stateName;");
+			
+ 		    echo "<table border='1' style='width:100%'>";
+	   	    echo "<tr><td>State Name</td><td>Electoral Votes</td><td>Swing State?</td></tr>";
+                    while($row = mysqli_fetch_array ($result)){
+                        $stateName = $row['stateName'];
+                        echo "<tr><td>$stateName</td>";
+			$result2 = mysqli_query ($conn, "select electoralVotes, swing from State where stateName='$stateName';");
+			$row2 = mysqli_fetch_array($result2);
+			$ev = $row2['electoralVotes'];
+			$sw = $row2['swing'];
+			echo "<td>$ev</td><td>$sw</td></tr>";
                     }
 
-
+		    echo "</table>";
 
                     ?>
                 </p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
                 <h3>Project Details</h3>
                 <ul>
                     <li>Lorem Ipsum</li>
