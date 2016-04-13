@@ -75,7 +75,20 @@
                 <!--<img class="img-responsive"--> 
 		    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Hillary_Clinton_official_Secretary_of_State_portrait_crop.jpg" style="height: 400px" alt="">
             </div>
+		
+            <div class="col-md-4">
+                <h3><center>Primaries Won by State</center></h3>
+		    <h4><center>As of April 5</center></h4>
+		    <p>
+	     </div>
+		
+            <div class="col-md-2">
+		    <img src="HillaryClintonPrimary.jpg" style="width: 400px" alt="">
+            </div>
            
+	     	
+       <div class="col-md-4">
+          <p>
             <?php
 
                 $servername = "localhost";
@@ -114,8 +127,8 @@
                     <li>Adipiscing Elit</li>
                 </ul>
             </div>
+	  </div>
 
-        </div>
         <!-- /.row -->
 
         <!-- Related Projects Row -->

@@ -75,9 +75,18 @@
                 <!--<img class="img-responsive"--> 
 		    <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Bernie_Sanders.jpg" style="height: 400px" alt="">
             </div>
-           
+		
             <div class="col-md-4">
-                <h3>Primaries Won by State</h3>
+                <h3><center>Primaries Won by State</center></h3>
+		    <h4><center>As of April 5</center></h4>
+		</div>
+		
+            <div class="col-md-2">
+		    <img src="BernieSandersPrimary.jpg" style="width: 400px" alt="">
+            </div>
+           
+	     
+	      <div class="col-md-4">
                 <p>
                     <?php
 
@@ -120,8 +129,8 @@
                     <li>Adipiscing Elit</li>
                 </ul>
             </div>
-
-        </div>
+	</div>
+		
         <!-- /.row -->
 
         <!-- Related Projects Row -->
