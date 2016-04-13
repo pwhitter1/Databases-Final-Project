@@ -79,9 +79,6 @@
 		    <p>
 	     </div>
 		
-            <div class="col-md-2">
-		    <img src="images/HillaryClintonPrimary.jpg" style="width: 400px" alt="">
-            </div>
            
 	     	
        <div class="col-md-4">
@@ -100,30 +97,31 @@
                     die("Conection failed: " . mysqli_connect_error());
                 }
 
-                $sql = "select * from CurrentPrimaryData where winnerName = 'Hillary Clinton';";
+		mysqli_query($conn, "use pwhitter1");
+
+                $sql = "select stateName from CurrentPrimaryData where winnerName='Hillary Clinton';";
               
-                $result = mysqil_query($conn, $sql);
+                $result = mysqli_query($conn, $sql);
+
+		echo "<table border='1' style='width:100%'>";
+	   	echo "<tr><td>State Name</td><td>Electoral Votes</td><td>Swing State?</td></tr>";
 
                 while($row = mysqli_fetch_array ($result)){
-                    $stateName = $row['stateName'];
-                    echo "$stateName";
-                    $result = mysqli_query();
-                    echo "<br>";
+                        $stateName = $row['stateName'];
+                        echo "<tr><td>$stateName</td>";
+			$result2 = mysqli_query ($conn, "select electoralVotes, swing from State where stateName='$stateName';");
+			$row2 = mysqli_fetch_array($result2);
+			$ev = $row2['electoralVotes'];
+			$sw = $row2['swing'];
+			echo "<td>$ev</td><td>$sw</td></tr>";
                 }
+		echo "</table>";
+
                 ?>
 
-            <div class="col-md-4">
-
-                <h3>Project Description</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-                <h3>Project Details</h3>
-                <ul>
-                    <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
-                </ul>
-            </div>
+		<div class="col-md-2">
+                    <img src="images/HillaryClintonPrimary.jpg" style="width: 400px" alt="">
+            	</div>
 	  </div>
 
         <!-- /.row -->
@@ -136,7 +134,7 @@
             </div>
             <div class="col-sm-3 col-xs-6">
             	<figure>
-                    <iframe src="https://docs.google.com/spreadsheets/d/1d36rLuDJk3avYB922TyqH7lzogrTllQd2lZT9RWTCYs/pubhtml?widget=true&amp;headers=false" height = "400" width="400"></iframe>
+                    <iframe src="https://docs.google.com/spreadsheets/d/1d36rLuDJk3avYB922TyqH7lzogrTllQd2lZT9RWTCYs/pubhtml?widget=true&amp;headers=false" height = "600" width="725"></iframe>
                  <figcaption><div align="center">Hillary Clinton</div></figcaption>
                 </figure>
             </div>
@@ -150,7 +148,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+                    <!--<p>Copyright &copy; Your Website 2014</p>-->
                 </div>
             </div>
             <!-- /.row -->
