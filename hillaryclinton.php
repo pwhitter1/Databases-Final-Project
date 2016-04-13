@@ -83,7 +83,7 @@
 	     </div>
 		
             <div class="col-md-2">
-		    <img src="HillaryClintonPrimary.jpg" style="width: 400px" alt="">
+		    <img src="images/HillaryClintonPrimary.jpg" style="width: 400px" alt="">
             </div>
            
 	     	

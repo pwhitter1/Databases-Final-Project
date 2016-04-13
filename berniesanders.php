@@ -82,7 +82,7 @@
 		</div>
 		
             <div class="col-md-2">
-		    <img src="BernieSandersPrimary.jpg" style="width: 400px" alt="">
+		    <img src="images/BernieSandersPrimary.jpg" style="width: 400px" alt="">
             </div>
            
 	     
