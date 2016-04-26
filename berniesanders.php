@@ -68,19 +68,23 @@
         <!-- Portfolio Item Row -->
         <div class="row">
 
-            <div class="col-md-8">
+            <!--<div class="col-md-8">-->
                 <!--<img class="img-responsive"--> 
-		    <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Bernie_Sanders.jpg" style="height: 400px" alt="">
-            </div>
+			<img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Bernie_Sanders.jpg" style="height: 400px" alt="">
+			<img src="RepresentativeGraphs/BernieSanders/BernieSandersTweet.png" style="height: 225px" hspace="35" alt="">
+			<!--</div>-->
 		
-            <div class="col-md-4">
-                <h3><center>Primaries Won by State</center></h3>
-		    <h4><center>As of April 5</center></h4>
-		</div>
+            <!--<div class="col-md-4">
+
+		</div>-->
 		
-            <div class="col-md-2">
-		    <img src="images/BernieSandersPrimary.jpg" style="width: 400px" alt="">
-            </div>
+            <!--<div class="col-md-2">-->
+	            <div class="col-lg-12">
+	                <h3 class="page-header">Primaries Won by State (as of April 5) </h3>
+	            </div>
+			
+		    <img src="images/BernieSandersPrimary.jpg" style="width: 500px" hspace="120" alt="">
+           <!--</div>-->
            
 	     
 	      <div class="col-md-4">
@@ -118,13 +122,7 @@
 
                     ?>
                 </p>
-                <h3>Project Details</h3>
-                <ul>
-                    <li>Lorem Ipsum</li>
-                    <li>Dolor Sit Amet</li>
-                    <li>Consectetur</li>
-                    <li>Adipiscing Elit</li>
-                </ul>
+                
             </div>
 	</div>
 		
@@ -134,14 +132,49 @@
         <div class="row">
 
             <div class="col-lg-12">
-                <h3 class="page-header">Info</h3>
+                <h3 class="page-header">Twitter Sentiment</h3>
             </div>
-            <div class="col-sm-3 col-xs-6">
+           <!--<div class="col-sm-3 col-xs-6">
             	<figure>
                     <iframe src="https://docs.google.com/spreadsheets/d/1d36rLuDJk3avYB922TyqH7lzogrTllQd2lZT9RWTCYs/pubhtml?widget=true&amp;headers=false" height = "400" width="400"></iframe>
                  <figcaption><div align="center">Bernie Sanders</div></figcaption>
                 </figure>
-            </div>
+            </div>-->
+	
+
+<?php   
+
+                    $servername = "localhost";
+                    $username = "pwhitter1";
+                    $password = "yCFFNyp.";
+
+                    $conn = mysqli_connect ($servername, $username, $password);
+
+                    // Check connection
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    mysqli_query($conn, "use pwhitter1");
+
+                    $result = mysqli_query ($conn, "select percentPositive,percentNegative,percentNeutral from Twitter where candidateName='Bernie Sanders';");
+
+                    $row = mysqli_fetch_array ($result);
+                    $pos = $row['percentPositive'];
+                    $neg = $row['percentNegative'];
+                    $neu = $row['percentNeutral'];
+                    echo "<h3>&nbsp;&nbsp;&nbsp;&nbsp;Positive: $pos%<br>";
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;Negative: $neg%<br>";
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;Neutral: $neu%</h3><br>";            
+        ?>
+	     
+           
+			<img src="RepresentativeGraphs/BernieSanders/twitter_sentiment_raw.png" style="width: 500px" alt="">
+			<img src="RepresentativeGraphs/BernieSanders/twitter_sentiment_volume.png" style="width: 500px" hspace="40" alt="">
+			
+			
+            
+		     
 
         </div>
         <!-- /.row -->
@@ -152,7 +185,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
+             <!--       <p>Copyright &copy; Your Website 2014</p>-->
                 </div>
             </div>
             <!-- /.row -->
@@ -170,3 +203,4 @@
 </body>
 
 </html>
+

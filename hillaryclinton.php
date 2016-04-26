@@ -68,45 +68,45 @@
         <!-- Portfolio Item Row -->
         <div class="row">
 
-            <div class="col-md-8">
-                <!--<img class="img-responsive"--> 
-		    <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Hillary_Clinton_official_Secretary_of_State_portrait_crop.jpg" style="height: 400px" alt="">
-            </div>
+
+			<img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Hillary_Clinton_official_Secretary_of_State_portrait_crop.jpg" style="height: 400px" alt="">
+			<img src="RepresentativeGraphs/HillaryClinton/HillaryClintonTweet.png" style="height: 255px" hspace="70" alt="">
 		
-            <div class="col-md-4">
-                <h3><center>Primaries Won by State</center></h3>
-		    <h4><center>As of April 5</center></h4>
-		    <p>
-	     </div>
+            <!--<div class="col-md-4">
+
+		</div>-->
 		
+            <!--<div class="col-md-2">-->
+	            <div class="col-lg-12">
+	                <h3 class="page-header">Primaries Won by State (as of April 5) </h3>
+	            </div>
+			
+		    <img src="images/HillaryClintonPrimary.jpg" style="width: 500px" hspace="120" alt="">
+           <!--</div>-->
            
-	     	
-       <div class="col-md-4">
-          <p>
-            <?php
+	     
+	      <div class="col-md-4">
+                <p>
+                    <?php
 
-                $servername = "localhost";
-                $username = "pwhitter1";
-                $password = "yCFFNyp.";
+                    $servername = "localhost";
+                    $username = "pwhitter1";
+                    $password = "yCFFNyp.";
 
-                $conn = mysqli_connect($servername,$username,$password);
+                    $conn = mysqli_connect ($servername, $username, $password);
 
-                //check conection
+                    // Check connection
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
 
-                if (!$conn){
-                    die("Conection failed: " . mysqli_connect_error());
-                }
+                    mysqli_query($conn, "use pwhitter1");
 
-		mysqli_query($conn, "use pwhitter1");
-
-                $sql = "select stateName from CurrentPrimaryData where winnerName='Hillary Clinton';";
-              
-                $result = mysqli_query($conn, $sql);
-
-		echo "<table border='1' style='width:100%'>";
-	   	echo "<tr><td>State Name</td><td>Electoral Votes</td><td>Swing State?</td></tr>";
-
-                while($row = mysqli_fetch_array ($result)){
+                    $result = mysqli_query ($conn, "select stateName from CurrentPrimaryData where winnerName='Hillary Clinton' order by stateName;");
+			
+ 		    echo "<table border='1' style='width:100%'>";
+	   	    echo "<tr><td>State Name</td><td>Electoral Votes</td><td>Swing State?</td></tr>";
+                    while($row = mysqli_fetch_array ($result)){
                         $stateName = $row['stateName'];
                         echo "<tr><td>$stateName</td>";
 			$result2 = mysqli_query ($conn, "select electoralVotes, swing from State where stateName='$stateName';");
@@ -114,30 +114,65 @@
 			$ev = $row2['electoralVotes'];
 			$sw = $row2['swing'];
 			echo "<td>$ev</td><td>$sw</td></tr>";
-                }
-		echo "</table>";
+                    }
 
-                ?>
+		    echo "</table>";
 
-		<div class="col-md-2">
-                    <img src="images/HillaryClintonPrimary.jpg" style="width: 400px" alt="">
-            	</div>
-	  </div>
-
+                    ?>
+                </p>
+                
+            </div>
+	</div>
+		
         <!-- /.row -->
 
         <!-- Related Projects Row -->
         <div class="row">
 
             <div class="col-lg-12">
-                <h3 class="page-header">Info</h3>
+                <h3 class="page-header">Twitter Sentiment</h3>
             </div>
-            <div class="col-sm-3 col-xs-6">
+           <!--<div class="col-sm-3 col-xs-6">
             	<figure>
-                    <iframe src="https://docs.google.com/spreadsheets/d/1d36rLuDJk3avYB922TyqH7lzogrTllQd2lZT9RWTCYs/pubhtml?widget=true&amp;headers=false" height = "600" width="725"></iframe>
-                 <figcaption><div align="center">Hillary Clinton</div></figcaption>
+                    <iframe src="https://docs.google.com/spreadsheets/d/1d36rLuDJk3avYB922TyqH7lzogrTllQd2lZT9RWTCYs/pubhtml?widget=true&amp;headers=false" height = "400" width="400"></iframe>
+                 <figcaption><div align="center">Bernie Sanders</div></figcaption>
                 </figure>
-            </div>
+            </div>-->
+	
+
+<?php   
+
+                    $servername = "localhost";
+                    $username = "pwhitter1";
+                    $password = "yCFFNyp.";
+
+                    $conn = mysqli_connect ($servername, $username, $password);
+
+                    // Check connection
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    mysqli_query($conn, "use pwhitter1");
+
+                    $result = mysqli_query ($conn, "select percentPositive,percentNegative,percentNeutral from Twitter where candidateName='Hillary Clinton';");
+
+                    $row = mysqli_fetch_array ($result);
+                    $pos = $row['percentPositive'];
+                    $neg = $row['percentNegative'];
+                    $neu = $row['percentNeutral'];
+                    echo "<h3>&nbsp;&nbsp;&nbsp;&nbsp;Positive: $pos%<br>";
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;Negative: $neg%<br>";
+                    echo "&nbsp;&nbsp;&nbsp;&nbsp;Neutral: $neu%</h3><br>";            
+        ?>
+	     
+           
+			<img src="RepresentativeGraphs/HillaryClinton/twitter_sentiment_raw.png" style="width: 500px" alt="">
+			<img src="RepresentativeGraphs/HillaryClinton/twitter_sentiment_volume.png" style="width: 500px" hspace="40" alt="">
+			
+			
+            
+		     
 
         </div>
         <!-- /.row -->
@@ -148,7 +183,7 @@
         <footer>
             <div class="row">
                 <div class="col-lg-12">
-                    <!--<p>Copyright &copy; Your Website 2014</p>-->
+             <!--       <p>Copyright &copy; Your Website 2014</p>-->
                 </div>
             </div>
             <!-- /.row -->
@@ -166,3 +201,4 @@
 </body>
 
 </html>
+
