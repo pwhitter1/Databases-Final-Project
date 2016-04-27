@@ -69,7 +69,7 @@
         <div class="row">
 
 			<img src="https://s3-us-west-2.amazonaws.com/john-kasich-assets/wp-content/uploads/2015/07/John-Kasich-Headshot.jpg" style="height: 400px" alt="">
-			<img src="RepresentativeGraphs/BernieSanders/BernieSandersTweet.png" style="height: 220px" hspace="40" alt="">
+			<img src="RepresentativeGraphs/JohnKasich/JohnKasichTweet.png" style="height: 220px" hspace="40" alt="">
 		
 		
 	            <div class="col-lg-12">
