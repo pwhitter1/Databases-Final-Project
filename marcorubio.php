@@ -85,8 +85,8 @@
                     <?php
 
                     $servername = "localhost";
-                    $username = "pwhitter1";
-                    $password = "yCFFNyp.";
+                    $username = "ENTER USERNAME HERE";
+                    $password = "ENTER PASSWORD HERE";
 
                     $conn = mysqli_connect ($servername, $username, $password);
 
@@ -95,7 +95,7 @@
                         die("Connection failed: " . mysqli_connect_error());
                     }
 
-                    mysqli_query($conn, "use pwhitter1");
+                    mysqli_query($conn, "use ENTER USERNAME HERE");
 
                     $result = mysqli_query ($conn, "select stateName from CurrentPrimaryData where winnerName='Marco Rubio' order by stateName;");
 			
@@ -137,8 +137,8 @@
 <?php   
 
                     $servername = "localhost";
-                    $username = "pwhitter1";
-                    $password = "yCFFNyp.";
+                    $username = "ENTER USERNAME HERE";
+                    $password = "ENTER PASSWORD HERE";
 
                     $conn = mysqli_connect ($servername, $username, $password);
 
@@ -147,7 +147,7 @@
                         die("Connection failed: " . mysqli_connect_error());
                     }
 
-                    mysqli_query($conn, "use pwhitter1");
+                    mysqli_query($conn, "use ENTER USERNAME HERE");
 
                     $result = mysqli_query ($conn, "select percentPositive,percentNegative,percentNeutral from Twitter where candidateName='Marco Rubio';");
 
