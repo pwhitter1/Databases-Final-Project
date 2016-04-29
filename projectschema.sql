@@ -30,3 +30,11 @@ create table HistoricalPrimaryData (
 	primary key (winnerName, year)
 );
 
+create table HistoricalGenElectionData (
+	year int(4) NOT NULL,
+	candidateName varchar(255) NOT NULL,
+	party varchar(255),
+	wonElection varchar(1),
+	statesWon int(11),
+	electoralVotes int(11)
+);
