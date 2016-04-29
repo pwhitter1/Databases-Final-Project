@@ -36,5 +36,6 @@ create table HistoricalGenElectionData (
 	party varchar(255),
 	wonElection varchar(1),
 	statesWon int(11),
-	electoralVotes int(11)
+	electoralVotes int(11),
+	primary key (year, candidateName)
 );
